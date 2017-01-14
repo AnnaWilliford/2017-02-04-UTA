@@ -1,8 +1,8 @@
 #--------------------------------------------------------------------------------
 # Values for this workshop - EDIT THIS SECTION.
 #--------------------------------------------------------------------------------
-workshop_repo   : "https://github.com/AnnaWilliford/2016-10-15-UTA/"
-workshop_site   : "http://annawilliford.github.io/2016-10-15-UTA/"
+workshop_repo   : "https://github.com/AnnaWilliford/2017-02-04-UTA/"
+workshop_site   : "http://annawilliford.github.io/2017-02-04-UTA/"
 #--------------------------------------------------------------------------------
 # Standard Software Carpentry settings - should not need to be modified.
 #--------------------------------------------------------------------------------
