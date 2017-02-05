@@ -37,7 +37,7 @@ celsius_fahrenheit()
 # - one big issue with this function is that it is way too limited, only converting one measure of celcius to fahrenheit
 # - let's make it a bit more flexible by adding an argument
 
-# In[5]:
+# In[3]:
 
 def celsius_fahrenheit(C):
     # F = (C * 9/5) + 32
@@ -45,7 +45,7 @@ def celsius_fahrenheit(C):
     return fahrenheit
 
 
-# In[6]:
+# In[4]:
 
 celsius_fahrenheit()
 
@@ -53,7 +53,7 @@ celsius_fahrenheit()
 # - notice the error we receive if we called it like we did before, which is telling us that an argument is required
 # - let's give it one
 
-# In[7]:
+# In[5]:
 
 celsius_fahrenheit(C=22)
 
@@ -61,14 +61,14 @@ celsius_fahrenheit(C=22)
 # - you can see this recapitulated what we did before by passing 22 celsius and getting fahrenheit back
 # - this is more flexible, however, because we aren't constrained to using only 22
 
-# In[8]:
+# In[6]:
 
 celsius_fahrenheit(30)
 
 
 # - another important point is that you can define a default value, which is useful in avoiding errors and making fuctions 'dummy-proof', though it isn't always a good idea
 
-# In[9]:
+# In[7]:
 
 def celsius_fahrenheit(C=22):
     # F = (C * 9/5) + 32
@@ -76,7 +76,7 @@ def celsius_fahrenheit(C=22):
     return fahrenheit
 
 
-# In[10]:
+# In[8]:
 
 celsius_fahrenheit()
 
@@ -84,7 +84,7 @@ celsius_fahrenheit()
 # - you can see that if no argument is passed, it automatically uses the 5 specified
 # - but we can still pass an argument and override the default
 
-# In[11]:
+# In[9]:
 
 celsius_fahrenheit(15)
 
@@ -94,7 +94,7 @@ celsius_fahrenheit(15)
 # - also set default argument values so that it will produce some result, no matter what
 # - lastly, determine what the difference is between the supplied temperature, which you are converting to celsius, and a 2nd argument that supplies a temperature that is already in celsius
 
-# In[12]:
+# In[10]:
 
 def fahrenheit_celsius(F=67, check=22):
     # C = (F - 32) x (5 / 9)
@@ -103,32 +103,32 @@ def fahrenheit_celsius(F=67, check=22):
     return diff_cel
 
 
-# In[13]:
+# In[11]:
 
 fahrenheit_celsius()
 
 
-# In[14]:
+# In[12]:
 
 fahrenheit_celsius(F=5)
 
 
-# In[15]:
+# In[13]:
 
 fahrenheit_celsius(5)
 
 
-# In[16]:
+# In[14]:
 
 fahrenheit_celsius(check=6)
 
 
-# In[17]:
+# In[15]:
 
 fahrenheit_celsius(F=33, check=67)
 
 
-# In[18]:
+# In[16]:
 
 fahrenheit_celsius(32, 48)
 
@@ -138,21 +138,21 @@ fahrenheit_celsius(32, 48)
 # - let's go back to our full dataset of demography and human health data for US counties and write a meaningful function based on that
 # - thinking back to yesterday, what do you have to do first to start working with that data?
 
-# In[19]:
+# In[17]:
 
 import pandas as pd
 
 
 # - now you can do the actual data import
 
-# In[20]:
+# In[18]:
 
-dem_heath_data = pd.read_csv("../data/Dem_Health_Full.txt", sep="\t")
+dem_health_data = pd.read_csv("../data/Dem_Health_Full.txt", sep="\t")
 
 
-# In[21]:
+# In[19]:
 
-dem_heath_data.head()
+dem_health_data.head()
 
 
 # - you should recognize what you are looking at
@@ -164,47 +164,41 @@ dem_heath_data.head()
 # - let's say we want to split data into 2 datasets: one that includes cities with very large populations and one that doesn't, and returns the one with cities
 # - create a function to do this
 
-# In[22]:
+# In[24]:
 
-def split_county_by_pop(df):
-    urban = df[df['Population_Density'] >= 1000]
-    rural = df[df['Population_Density'] < 1000]
+def get_urban(df):
+    urban = df.loc[df['Population_Density'] >= 1000, :]
     return urban
 
 
-# In[23]:
-
-split_county_by_pop(dem_heath_data)
-
-
-# In[24]:
-
-urban_counties = split_county_by_pop(dem_heath_data)
-
-
-# In[25]:
-
-urban_counties.head()
-
-
-# - but what if we want both outputs
-# - turns out it is pretty easy to do that once you see an example
-# - in this case, we are going to return a list that includes 2 elements: the urban subset and the rural subset
-
 # In[26]:
 
-def split_county_by_pop(df):
-    urban = df[df['Population_Density'] >= 1000]
-    rural = df[df['Population_Density'] < 1000]
-    return [urban, rural]
+urban_counties = get_urban(dem_health_data)
 
 
 # In[27]:
 
-urban_rural_counties = split_county_by_pop(dem_heath_data)
+urban_counties.head()
 
 
-# In[28]:
+# - but what if we want both urban and rural
+# - turns out it is pretty easy to do that once you see an example
+# - in this case, we are going to return a list that includes 2 elements: the urban subset and the rural subset
+
+# In[48]:
+
+def split_county_by_pop(df):
+    urban = df.loc[df['Population_Density'] >= 1000, :]
+    rural = df.loc[df['Population_Density'] < 1000, :]
+    return [urban, rural]
+
+
+# In[49]:
+
+urban_rural_counties = split_county_by_pop(dem_health_data)
+
+
+# In[50]:
 
 urban_rural_counties.head()
 
@@ -212,7 +206,7 @@ urban_rural_counties.head()
 # - oops, we can't see the head of a list like we can a data frame
 # - let's try printing
 
-# In[29]:
+# In[51]:
 
 urban_rural_counties
 
@@ -221,7 +215,7 @@ urban_rural_counties
 # - why?
 # - it is because we have a list element, not a dataframe
 
-# In[30]:
+# In[52]:
 
 type(urban_rural_counties)
 
@@ -230,18 +224,18 @@ type(urban_rural_counties)
 # - is is very easy to subset lists (called slicing) using indexing, where an index represents an ordered section of the element
 # - let's do this, remembering that the urban counties are the first element of our list
 
-# In[31]:
+# In[53]:
 
-urban_rural_counties[1]
+urban_rural_counties[1].head()
 
 
 # - what happened? we have our rural county data not our urban county data
 # - python is 0-index or has an origin of 0
 # - that means that the first element is 0, 2nd is 1, etc. up to n-1 elements
 
-# In[32]:
+# In[54]:
 
-urban_rural_counties[0]
+urban_rural_counties[0].head()
 
 
 # ### Challenge
@@ -249,37 +243,37 @@ urban_rural_counties[0]
 # - at some other time, you may wish to split your dataset using a different threshold
 # - let's code a function that allows us to do that as a last challenge
 
-# In[33]:
+# In[56]:
 
 def split_county_by_pop(df, threshold):
-    urban = df[df['Population_Density'] >= threshold]
-    rural = df[df['Population_Density'] < threshold]
+    urban = df.loc[df['Population_Density'] >= threshold, :]
+    rural = df.loc[df['Population_Density'] < threshold, :]
     return [urban, rural]
 
 
-# In[34]:
+# In[57]:
 
-urban_rural_counties = split_county_by_pop(dem_heath_data, 500)
-
-
-# In[35]:
-
-urban_rural_counties[0]
+urban_rural_counties = split_county_by_pop(dem_health_data, 500)
 
 
-# In[36]:
+# In[58]:
+
+urban_rural_counties[0].head()
+
+
+# In[59]:
 
 len(urban_rural_counties[0])
 
 
-# In[37]:
+# In[60]:
 
 urban_check = urban_rural_counties[0]
 
 
-# In[38]:
+# In[61]:
 
-urban_check['Population_Density'].min()
+urban_check.loc[: ,['Population_Density']].min()
 
 
 # - awesome, we have what we need now!

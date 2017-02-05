@@ -70,3 +70,4 @@ Note: Students must have Git installed and must have created a GitHub account.
     - Now that our changes have been committed, we can push them online to GitHub with `git push origin master`
     - Go to your repository on GitHub and view the `demographic_analysis_report` Markdown document that you created. Notice the formating that has appeared as your Markdown gets rendered.
     - Let's finish by having you go back to your report document. You've created a narrative using Markdown. Now let's insert back in the important code so that we can view more details about what happened.
+    - Take a look at the `demographic_analysis_report.ipynb` to see a working examples of what a Jupyter notebook report could look like.
