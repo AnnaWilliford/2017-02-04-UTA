@@ -1,0 +1,612 @@
+Welcome to Software Carpentry Etherpad!
+
+
+This pad is synchronized as you type, so that everyone viewing this page sees the same text. This allows you to collaborate seamlessly on documents.
+
+Use of this service is restricted to members of the Software Carpentry and Data Carpentry community; this is not for general purpose use (for that, try etherpad.wikimedia.org).
+
+Users are expected to follow our code of conduct: http://software-carpentry.org/conduct.html
+
+All content is publicly available under the Creative Commons Attribution License: https://creativecommons.org/licenses/by/4.0/
+
+
+########################################################
+
+
+Welcome to Software Carpentry Workshop!
+
+
+########################################################
+
+Workshop website:
+
+https://annawilliford.github.io/2017-02-04-UTA/
+
+########################################################
+
+Please fill out pre-workshop survey:
+
+https://www.surveymonkey.com/r/swc_post_workshop_v1?workshop_id=2017-02-04-UTA
+
+########################################################
+
+
+
+Day 1 - Morning: Python
+
+We are using Python 3, but some may only have access to Python 2 or may want to know what the difference is.
+There isn't a huge difference, but a few commands we will use do differ between the two.
+Here is a page that gives a broad overview of key differences that you'd be likely to encounter: http://sebastianraschka.com/Articles/2014_python_2_3_key_diff.html
+
+Opening Jupyter Notebooks:
+Instructions for changing the Jupyter startup location
+http://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/execute.html
+
+Or just do the following:
+    1. Open a fresh terminal/git-bash (just close any already open ones to make this easy)
+    2. Type 'jupyter notebook'
+    3. A browser window will open with the Jupyter navigator
+    4. Navigate to the folder you want to work in (called a 'working directory')
+
+Jupyter cell keyboard shortcuts:
+To execute cell: press control+enter or Shift + Enter
+To add a new cell above: press control+m+a
+To add a new cell below: press control+m+b
+For exhaustive list, visit https://www.cheatography.com/weidadeyue/cheat-sheets/jupyter-notebook/ (thanks @Naren)
+
+Help in Python:
+If you ever need help with a Python function/command, there is a 'help' command in Python to get help.
+help(command_name)
+Or 'Googling' usually yields answers pretty quickly.
+
+Mathematical operations:
+To raise a to the power b: type a**b
+To find a modulo b: type a%b
+
+## Challenge:
+    Let's assign a number to a variable and then perform a math operation.
+
+Data Structures:
+To create an array: array=[a,b,c,d]
+Array index starts at 0
+To access a particular element in an array: array[2]. This gives 'c'
+To add an element to an array: array.append(e). This adds 'e' to the array.
+A dictionary is used to assign a key to a value: dictionary={'one',1}
+To use a particular value from the dictionary, use the key (not an index): dictionary['one'].
+An array is ordered, but a dictionary is not ordered.
+To add a value to a dictionary: DICTIONARY['KEY'] = 'VALUE' or dict.update()
+To create a tuple: tuple=(1,2,3)
+Lists are mutable, but tuples are immutable (meaning tuples cannot be modified).
+
+To see more info on Data Structures, visit:
+    https://www.tutorialspoint.com/python/python_tuples.htm
+    https://docs.python.org/3/library/stdtypes.html?highlight=dict.update#dict.update
+    https://docs.python.org/3/tutorial/datastructures.html?highlight=tuples#tuples-and-sequences
+    or 'Google' the data structure you are interested in (tuple, dictionary, list, etc.)
+    
+Quotes in Python: single ('') and double ("") quotes are interpreted the same way in Python. Not necessarily the case in other languages.
+http://pad.software-carpentry.org/2017-02-04-UTA
+Download the data at the following link and place it in your 'python' folder
+https://www.dropbox.com/s/qe6nwgabuf9q5mq/Dem_HealthData.zip?dl=0
+http://pad.software-carpentry.org/2017-02-04-UTA
+Working with DataFrames in Python:
+pandas is a package used to manipulate dataframes (i.e., tabular data).
+To use pandas: import pandas
+Usually we import all packages we want to use at the beginning of a python script file
+
+dem_data=pandas.read_csv()
+Note: you need the () here in order for this to be a full command. What is normally contained in the parentheses are arguments/options for the command. Sometimes you won't have any, but still need parentheses. General structure of a python command:
+    <object>.<command>(<options>)
+
+To view the data properly, use a separator. If the data is separated by tabs, use: sep='\t'
+define data file using pandas:
+NAME = pandas.read_csv(r"FILE LOCATION", sep = '\t')
+the "r" before FILE LOCATION helps with a unicode error (may not need the 'r' in many cases)
+'\t' is for tab-seperated data - can also use other separators to match the file you are working with
+when entering FILE LOCATION, you can omit everything that is already in your working directory
+
+DO NOT READ THIS NOW, BUT THIS IS AN EXPLANATION OF THE RAW STRING STUFF
+https://docs.python.org/2/reference/lexical_analysis.html
+
+To view that types of data within the data frame: dem_data.dtypes
+
+To clean the data:
+    To replace na with 0: dem_data.fillna(0)
+    To replace negative numbers with 0: clean_dem_data.loc[(dem_data['Suicide'] < 0), 'Suicide'] = 0
+Once the data is cleaned, you must save the data to a new data frame.
+
+
+
+Index both row and column:
+clean_dem_data.loc[(dem_data['Suicide'] < 0), 'Suicide'] = 0
+
+To perform operations on the data:
+    To get the mean, std deviation, etc on a certain column: c_dem_data['columnname'].describe()
+    To calculate the mean of a certain column: c_dem_data['columnname'].mean()
+    You can use other functions such as: .min(), .max(), etc in place of .mean()
+
+
+Plotting in Python:
+import matplotlib.pyplot as plt - this imports matplotlib.pyplot and renames it as plt. Then you can refer to matplotlib.pyplot simply as plt in the future.
+import FIRST as SECOND
+means import FIRST as SECOND, where you can type SECOND as a shortcut to access FIRST
+
+plt.hist(c_dem_data['Poverty'])
+plt.savefig("histogram.png")
+plt.show()
+
+## Challenge:
+    Take any column of your choice and plot a histogram for it.
+    If this is too easy: can you figure out how to change the color? Hint: May need to look at function help by typing 'help(function_name)
+
+To save the plot: plt.savefig("histogram.png")
+Once you create the plot, save it first, and then show.
+
+To create scripts:
+    import sys
+To accept arguments: sys.argv[1]
+We start with 1, because 0 stands for the script name
+To accept a file name from the user and creat a data frame using that file:
+     input_file=sys.argv[1]
+          df=pandas.read_csv(input_file)
+
+
+import sys,pandas
+input_file=sys.argv[1]
+col = sys.argv[2]
+df=pandas.read_csv(input_file,sep='\t')
+import matplotlib.pyplot as plt
+plt.hist(df[col])
+plt.show()
+
+To run the script, type the following into the terminal: python script.py TX.txt Poverty
+Then hit enter; this should display a histogram of the Poverty column. 
+
+Note: the data set and the script file must be saved in the same folder.
+
+
+Day 1 - Afternoon: Linux Shell
+
+This is a link to the data files we are going to be using to demonstrate the Linux Shell.
+
+https://drive.google.com/open?id=0B1OMWQ573A8nQllacHROTmtoVTA
+
+
+Shell commands (options are indented):
+Case Matters!!! Must type exactly as it is. 'file' does not equal 'File'
+If you ever need help:
+Mac/Linux terminal: 'man(<command>)'
+Git-Bash on Windows: <command> --help
+Or, as always, Google
+
+whoami: returns username
+pwd: returns current working directory
+cd: change directory
+ls: lis
+-F: flags directories    
+-a: show all
+-l: sort numeric
+rmdir: removes directory
+mkdir: makes directory
+cd .. : goes back one in the directory
+More details: '.' means current directory; '..' means the parent directory
+cd /: goes to the root directory
+cd ../..: goes up two directories
+
+cd ~: goes to home directory
+cd -: goes to your last working directory (the last directory you were in before current one)
+
+nano: terminal-based text editor
+control+x: exit 
+control+o: save (w/o quitting)
+
+rm: removes file permanently
+mv: renames file  (which has the effect of 'move' in certain contexts)
+or thought of another way: mv = move, which has the effect of 'renaming' in certain contexts
+mv <source> <target>
+mv will overwrite  <target> - so be careful
+'-i' flag will help prevent against overwriting by prompting (see help page for mv)
+cp <source> <target>: copies to a new file
+wc: word count (gives number of lines, number of words, and number of characters in file)
+-l = just lines
+-w = just words (word = text surrounded by white space)
+-c = character
+
+*: matches any number of any character
+?: matches one and only one character (character can be anything)
+
+sort: sort a file
+-n = numeric sort (vs. alphabetical, etc.)
+-r = reverse (1, 2, ..., 10 becomes 10, 9, ..., 1)
+
+cat: concatenate and print to terminal (stdout)
+head -1: shows the first entry in the list
+head -5: shows first 5 entries
+tail: show last N lines of a file
+-n: the number of lines
+if you just specify a number (e.g., 3) it will give you that number of lines (e.g., the last 3 lines)
+if you instead specify '+'number (e.g., +3) it will start reading from that line and print everything after it (e.g., it will print from line 3 to the end)
+
+'>': redirect stdout (which normally just gets printed to the terminal) to a file (like saving output to file). overwrites contents if there is already something there
+'>>': we didn't talk about it, but this also redirects to a file, but appends to anything that is already there
+
+
+' | ': pipe  (puts multiple commands together)
+automatically takes the output of the command before the '|'
+and uses it as input for the command after the '|'
+
+>: overwrites to the file
+>>: appends to the file
+
+man <command>: takes you to the manual/help for the command in question
+or <command> --help on Git-Bash
+
+echo "<some text>": prints the text you specify back to you (i.e., echos)
+
+tab completion:
+hit <tab> when typing something and if it can automatically finish it with something in your working directory, it will
+if it doesn't, hitting <tab> twice will print anything that matches
+
+for loops:
+$ for file in file1 file2 file3
+> do
+> head -3 $file
+> done
+... output ...
+
+for = for loop command
+file = variable name, so you can set it to anything, but best to use intuitive variables
+in = ... in the following list ...
+file1 file2 file3 ... = list of files or strings or whatever to iterate through with the for loop
+do: do whatever follows on the given iteration of the for loop
+head -3: the command to run, which could essentially be anything
+$file: the variable, which now has the '$' at the beginning to tell the loop to look for the stored variable for that iteration of the loop
+$ is common for shell variables, and if you continue learning shell you will use it in other contexts
+done: ends for loop
+
+if you are understanding this, you should be able to interpret the following command:
+$ for file in file1 file2 file3
+> do
+> echo $file
+> cat $file
+> done
+
+cut: excise certain columns (called "fields") from a file
+-f: give field numbers you want to excise
+-d: gives the delimiter (tab, comma, etc.). limitation: only 1-character delimiters are possible
+
+touch: creates a file, if it doesn't already exist (it is empty) or if file does exist, it resets the last time the file was manipulated to now
+
+$ for filename in ??.txt
+> do
+> cp $filename > data/${filename:0:2}.tsv
+> done
+
+new thing here is '${filename:0:2}.tsv
+1. Looks at 'filename' variable and sees what it is currently set to (this varies as the loop proceeds)
+2. Uses the first two characters
+3. And appends '.tsv' to the end, to give it a new name
+
+Note: to test a "for" loop before executing it, put "echo" in front of command. This will let you see what it will look like when you do execute it.
+Note: Daren prefers to put "" around the string you want to echo, to make it explicit, but others might not. Makes it easier to read too. There are times where it might make a difference.
+Example: 'echo "cat $variable"' instead of just 'echo cat $variable'
+
+
+Create the following Python script
+Called: add.py
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+#adds a list of numbers togther and prints the output
+import sys
+
+accumulator = 0
+for line in sys.stdin:
+    accumulator = int(line) + accumulator
+print(accumulator)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If you are ahead, annotate your Python script using comments ('#') and tell your future self (or someone else) what each line is doing
+This is a good habit to get into and you will praise yourself for annotating your scripts when you dig them out months/years later and need to know what is going on.
+
+Create a file called 'numbers.txt' with:
+~~~~~~~~~~~~~~~~~~~~~~~~
+0
+1
+2
+3
+4
+5
+~~~~~~~~~~~~~~~~~~~~~~~~(Make sure there are no extra lines in this file)
+
+Run following:
+python add.py < numbers.txt
+
+Output:
+15
+
+Now can run on one of our 'real' data files, in a piped command
+
+cut -f 7 TX.tsv | tail -n +2 | python add.py
+
+Annotated:
+exise the 7th column from TX.tsv | cut off the top, 'header' line | calculate the sum
+7th column = births, so you can hopefully now tell us what the result means
+
+Can also make shell/bash scripts
+Analogous to Python scripts, but using the shell 'language'
+Let's make the command we just ran a shell script
+make a new script: births.sh
+~~~~~~~~~~~~~~~~~~~~~~~~
+cut -f7 TX.tsv | tail -n +2 | python add.py
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+We can generalize this even more, by modifying 'births.sh' to:
+~~~~~~~~~~~~~~~~~~~~~~~~
+# births.sh how many births in a state
+# Usage: births.sh [STATE ABBRV.]
+
+cut -f 7 $1.tsv | tail -n +2 | python add.py
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+grep: search files for specific queries
+grep "A" file.txt: finds and prints the lines that contain a "A" anywhere on the line
+-v: invert = lines that don't match the query
+"^A" = only lines where 'A' is the first character
+
+Regular expressions allow you to match specific character contexts:
+The '^' we used to say 'only A at the beginning of the line' is a type of regular expression
+To learn more about python regular expressions: google "google python" for online course.
+to clarify, regular expressions transcend Python... this course just uses Python to teach them
+These are fairly advanced for beginners, but good to at least learn the basics at some point
+Here is a website devoted to them, which has some introductions/tutorials:
+http://www.regular-expressions.info/tutorialcnt.html
+
+find: search for files/directories
+find . -name A?.tsv = find all files that begin with 'A' and end with '.tsv' in the current directory (indicated by '.')
+current directory includes any subdirectories also (i.e., it is 'recursive')
+
+
+Day 1 Exam/Homework
+
+What is the deadliest county in each state?
+
+bash example:
+#deadliest.sh run in the directory with the .tsv data files that we made last night to process a list of the deadliest counties in each state
+
+for file in *.tsv
+do
+        max=0
+        #reset the maximum to zero for each state
+        for line in $(cut -f7 $file | tail -n +2)
+        do
+                if [ $line != '-2222.2' ]
+                #if the data is bad, don't process it, just skip it
+                #because bash can't handle floating point numbers, 
+                #you can use string comparison                
+                then
+                if (($max < $line))
+                #the double parens does integer comparison
+                then
+                        #if the current line is larger than the current 
+                        #max, set it as the maximum
+                        max=$line
+                fi
+                fi
+        done
+        #print the state abbreviation, the county name, selected via grep
+        #then the maximum
+        echo ${file:0:2}, $(grep $max $file | cut -f1), $max
+        
+done
+
+Python example:
+#Deadliest State
+tot_death ={}
+for i in state_set:
+    all_deaths =health_data.loc[health_data['State']==i, ['Total_Deaths']]
+    tot_death[i] = sum(all_deaths.values)[0]
+
+print('Deadliest State is: ',max(tot_death),tot_death[max(tot_death)])
+
+Deadliest County in Each State
+
+state_set =set(health_data['State'])
+ 
+for i in state_set: 
+    county_data = health_data.loc[health_data['State']==i, ['County','Total_Deaths']].values
+    county_names =county_data[:,0]
+    county_deaths =county_data[:,1]
+    tot_death = dict(zip(county_deaths,county_names))
+    print ( 'Deadliest County in ',i,' is: ',tot_death[max(county_deaths)],max(county_deaths))
+
+Birth to Death Ratio of Each State?
+
+Python example:
+ #Birth to Death Ratio per state
+state_set =set(health_data['State'])
+for i in state_set:
+    all_births =health_data.loc[health_data['State']==i, ['Total_Births']]
+    all_deaths =health_data.loc[health_data['State']==i, ['Total_Deaths']]
+    ratio_Birth_to_Death = sum(all_births.values)[0]/sum(all_deaths.values)[0]
+    print (i,ratio_Birth_to_Death)
+
+We will share some answers in the morning.
+
+The Advanced Bash Scripting Guide
+
+Good resource for learning all about the weird stuff you can do with bash.
+
+tldp.org/LDP/abs/html/
+
+
+Day 2 - Morning 1: 
+Python Programming
+
+Link to data:
+https://raw.githubusercontent.com/AnnaWilliford/2017-02-04-UTA/gh-pages/workshop/02_day/data/Dem_Health_Full.txt
+
+
+Terminal commands:
+    wget: will transfer data from whatever URL you specify
+    curl -O: alternative to wget
+    less: displays data in a controlled manner, section by section
+    history: shows last commands issued
+    To open a jupyter notebook, type: jupyter notebook
+    Once the notebook is open, you must keep the shell window open.
+         This shell will continue to give you instructions as you use the notebook.
+
+
+you can kill whats running
+-MAC: ctrl+x
+-windows: ctrl+z
+-Linux: ctrl+c
+
+
+Link to Daren's Python notebook:
+https://dl.dropboxusercontent.com/u/101820336/2017-02-04_uta/desktop/software_carpentry_2017/day2/python_day2_jupyter_notebook.py
+
+Modular programming makes codes compact and efficient.
+
+To create a function
+define a function: def functionname(input arguments):
+Issue commands
+To end the function: return <output>>
+
+Tabs make code readable, but in python they are also necessary syntax for the code to run.
+Space made the code readable, but are not necessary.
+
+control+enter: executes the command
+shift+enter: executes the command and gives a new cell
+
+
+## Challenge:
+make a function that converts fahrenheit to celsius
+Formula: C = (F - 32) x (5 / 9)
+allow user to specify input fahrenheit
+define a default
+
+To define a default, set an initial value as the input argument, ie: def fahrenheit_celsius(F=35):
+Then if the user does not specify a value for F, the function will run F=35; if the user specifies a value for F, that value will overwrite F=35.
+Example: the head function has a default of displaying the first 5 lines. If you want to change the number of lines displayed to 20, enter: head(20)
+
+pd.read_csv: this is a command to use pandas to read a comma separated value file. Then, inside the parenthesis, you can specify a different separator ("\t", for instance)
+
+variable = df.loc[rows, columns]
+example: urban = df.loc[df['Population_Density']>=1000,:]
+This goes through the dataframe df row by row and selects all columns for each row in which populations density is greater than or equal to 1000
+The colon in the column entry indicates that all columns in the row should be saved. 
+
+To return multiple outputs: a function can only return one object, so you can group multiple outputs in a list, or a tuple.
+Note: a list is not a dataframe, so the function head will not work here. In this case, you can subset the list to create a dataframe with the entry that you specified.
+
+To find the length of a list, use: len()
+Note: the length of a list will just be each element in the list. You may need to subset the list to actually find the length of a dataframe.
+
+
+Day 2 - Morning 2: Data Visualization in Python
+
+!!! EXTREMELY IMPORTANT !!!!
+
+We need to install anaconda in the pygal which is a python charting library.
+Here are the steps for installing pygal
+
+step 1. open command prompt
+step 2. type python --version
+output of step 2. Python 3.5.2 :: Anaconda 4.2.0 (64-bit) <------- the output look something similar to this
+if the output doesnt look similar to this:
+        step a. find out where the Anaconda installed (eg. C:\Users\Gaurav Kolekar\Anaconda3)
+        step b. go to system environment (hit the windows button and search for system environment)
+        step c. go to system path
+        step d. add the anaconda path to the system path
+        step e. hit ok button and close
+        step f. go back to step 1.
+
+pygal: external plotting library
+To install pygal type: 
+    1. pip install pygal (or conda install pygal)+enter
+    2. python+enter
+    3. import pygal+enter
+    3. quit()+enter 
+    
+REMINDER: Python history is being saved for this lesson at https://dl.dropboxusercontent.com/u/101820336/2017-02-04_uta/desktop/software_carpentry_2017/day2/python_day2_jupyter_notebook.py
+    
+    Packages contain only functions.
+    Libraries contain classes.
+    
+    To import the needed package: from IPython.display import SVG
+
+dir(df) tells you all of the functions that can be run on that dataframe
+the .loc command runs off of the python indexe, which starts at 0.
+the .iloc command only understands integers (i = index, which is integer location of ordered dataset)
+Counting in python is [inclusive, exclusive)....so 2:5 will count 2,3,4
+
+To modify the current dataframe when cleaning it: health_data.fillna(0, inplace=True)
+But, be careful because you will lose the original dataset. Because of this, it might be best to copy the file before modifying it.
+
+To replace -1111.1 in the Suicide column with 0, type: health_data['Suicide'].replace(-1111.1,0,inplace=True)
+inplace=True modifies that current data structure, rather than returning a modified copy
+
+Nested lists
+To create a nested list with tuples as elements: nested_list =[(1,2),(3,4)]
+
+\ is an escape character. It will take you to the next line while staying within the same command.
+
+To make a list of tuples from selected columns of data (in this case, data_for_al): lst = [tuple(x) for x in data_for_al.values]
+This is a loop which runs  'x' from every number in the index.
+We can use this list of tuples as a list of coordinates from which we can create a scatterplot.
+
+To create the scatter plot:
+     To create a plot with an XY axis: scatter_plot=pygal.XY(stroke=False)
+To add points to the plot using our list of tuples : scatter_plot.add('AL',lst)
+To show the scatterplot: SVG(scatter_plot.render())
+
+You can create a scatterplot in matplotlib (and many others), but the benefit of pygal is that it is interactive. 
+There is a lot of information on line - most libraries will have a gallery online that will show the different types of plots that are available.
+
+To create a title type: scatter_plot.title='Population Density vs. Poverty'
+To label x and y-axis: scatter_plot=pygal.XY(stroke=True, x_title='Population Density', y_title='Poverty')
+To change the scale of the x-axis: scatter_plot=pygal.XY(stroke=False, x_title='Population Density', y_title='Poverty', xrange=(0,100))
+
+WEBSITE THAT REALLY HELPS
+http://www.pygal.org/en/stable/documentation/types/xy.html
+
+
+Extra code:
+# one last cool stuff
+from pygal.style import NeonStyle
+scatter_plot = pygal.XY(stroke=False, x_title='Population Density', y_title='Poverty', xrange=(0,10), dots_size=2,\
+                        style=NeonStyle, fill=True)
+scatter_plot.title = 'Population Density vs Poverty Corelation'
+scatter_plot.add('AL', lst)
+scatter_plot.add('TX', lst2)
+SVG(scatter_plot.render())
+
+from pygal.style import LightSolarizedStyle
+chart = pygal.StackedLine(fill=True, interpolate='cubic', style=LightSolarizedStyle)
+chart.add('A', [1, 3,  5, 16, 13, 3,  7])
+chart.add('B', [5, 2,  3,  2,  5, 7, 17])
+chart.add('C', [6, 10, 9,  7,  3, 1,  0])
+chart.add('D', [2,  3, 5,  9, 12, 9,  5])
+chart.add('E', [7,  4, 2,  1,  2, 10, 0])
+SVG(chart.render())
+
+Mean of Column:
+   def mean_of_column (state_name, column_name):
+    state_df = health_data.loc[health_data['State'] == state_name,[column_name]]
+    return state_df[column_name].mean() 
+
+To find all unique states: health_data['State'].unique()
+To make this into a list: list(health_data['State'].unique())
+To move legend to the bottom and arrange in rows, type: bar_chart=pygal.HorizontalBar(legend_at_bottom=True, legend_at_bottom_columns=11)
+
+
+Day 2 - Afternoon: Git/GitHub
+
+Link to command history:
+https://dl.dropboxusercontent.com/u/101820336/2017-02-04_UTA/git_command_history.txt
+
+Git is a version control/version tracking system. This allows you to track files and how they change over a period of time (think: GoogleDocs).
+GitHub is an online version of Git that can be used to share code.
+
+To add all the files that are not currently being tracked, type: add *
