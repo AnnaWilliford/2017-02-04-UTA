@@ -1,0 +1,163 @@
+Kevin - Instructor:09:19 Hello everyone. We can answer questions in chat as well!
+Nashir:09:24 Hi
+Naren:10:20 https://www.cheatography.com/weidadeyue/cheat-sheets/jupyter-notebook/
+Daren C. - Instructor:10:22 Don't be afraid to copy links with useful information into the notes on the left
+Daren C. - Instructor:10:22 Just write a short blurb telling people what it is so they know
+apurva!:10:26 Done!
+apurva!:10:39 Will everything we are typing in this jupyter notebook get saved?
+Kevin - Instructor:10:45 Yes, Everything will be saved
+apurva!:10:46 Thanks
+Kristopher:10:46 how do you append/add to a dictionary?
+Arifuddin :10:47 ^bump
+Mary:10:47 I understood that because a dictionary is not ordered, you cannot append it. If you want to change it you have to create a new dictionary. Is that true?
+Mary:10:47 I understood that because a dictionary is not ordered, you cannot append it. If you want to change it you have to create a new dictionary. Is that true?
+Kevin - Instructor:10:47 dict.update()
+apurva!:10:47 Save this downloaded data where?
+Kristopher:10:48 thank you.
+Kevin - Instructor:10:48 https://docs.python.org/3/library/stdtypes.html?highlight=dict.update#dict.update
+razin:10:50 https://www.tutorialspoint.com/python/python_tuples.htm
+razin:10:50 https://www.tutorialspoint.com/python/python_tuples.htm
+Kevin - Instructor:10:51 https://docs.python.org/3/tutorial/datastructures.html?highlight=tuples#tuples-and-sequences
+Dhinesh:11:29 what is the values is 'Null' will that get replaced to 0?
+Kevin - Instructor:11:32 They are bad values from the CHSI dataset. Some counties don't collect that data, so we don't have it.
+Kevin - Instructor:11:33 This is a subset of a CDC dataset known as the Community Health Status Indicators, and those are arbitrary null values that are described in the README file for the dataset
+Daren C. - Instructor:11:34 Think of 'NULL' as missing, because it wasn't measured or observed. 0 means that we observed something and it is measured as 0. They are fundamentally different.
+razin:11:35 y did the first column got nulled out
+razin:11:35 ?
+Kristopher:11:49 whats the difference between using single quote ' ' and double quotes " "?
+Kristopher:11:51 and whats the reason behind the empty parenthesis () at the end?
+Daren C. - Instructor:11:52 Quotes: there is no real difference between single and double quotes - http://stackoverflow.com/questions/143714/is-there-any-difference-between-string-and-string-in-python
+Daren C. - Instructor:11:53 commands are issued as <object>.<command>(<options>). If you have no options/arguments then you can leave the parentheses blank. They are needed, however, as otherwise it isn't a command anymore. Try without the () and you will probably get an error
+Daren C. - Instructor:11:54 and the quotes answer I provided applies only to Python. In other languages, there is usually a difference
+Kristopher:11:58 thank you very much instructor Daren
+bruce_wayne:12:19 waht does it mean when we sat that zero stands for the script name?
+bruce_wayne:12:23 waht does it mean when we sat that zero stands for the script name?
+:12:23 This is confusing .
+Kristopher:13:49 does bash care about upper/lower case?
+Daren C. - Instructor:13:51 Yes, every programing language cares a lot and you'll get errors if you don't write things as they appear exactly
+Daren C. - Instructor:13:51 That said, some advanced programs/shells are "smart" and may make suggestions or guesses about what you mean if you make a small mistake, but don't ever rely on this
+Kristopher:13:57 thank you again
+SjN:13:58 1
+bob:13:59 1
+apurva!:13:59 1
+Moleary:13:59 1
+Juan Cardenas:13:59 1
+Sergio:13:59 1
+Saran:13:59 1
+razin:13:59 1
+Kristopher:13:59 1
+Julio:13:59 1
+TBurwell:13:59 1
+Jesus:14:00 1
+yam:14:01 1
+Juan Cardenas:14:01 8
+yam:14:01 1
+apurva!:14:02 2
+Dhinesh:14:02 10
+Arifuddin :14:02 5,4,7
+FCAMPA:14:02 8
+razin:14:02 2
+apurva!:14:08 3
+Shane:14:08 2
+Shane:14:08 4
+Ann:14:09 4
+Jesus:14:09 4
+Julio:14:09 2
+razin:14:09 4
+Saran:14:30 2
+Moleary:14:30 2
+Julio:14:30 2
+Ann:14:30 2
+Shane:14:30 2
+KUNAL:14:30 2
+Sergio:14:30 2
+apurva!:14:30 2
+Arifuddin :14:30 2
+FCAMPA:14:31 1,2
+unnamed:14:31 2
+razin:14:31 2\
+razin:14:31 2
+razin:14:34 4
+Shane:14:34 4
+FCAMPA:14:36 2
+:14:36 4
+Sergio:14:37 3
+Jesus:14:37 3
+Sergio:14:38 jk 2
+Jesus:14:38 2
+Curly Fry:14:40 2
+Curly Fry:14:41 2
+Curly Fry:14:41 ^_^
+Mary:15:15 why do we say echo?
+Kristopher:15:17 ^
+Daren C. - Instructor:15:24 'echo' means echo text back, which means print
+Daren C. - Instructor:15:24 so echo "text" is essentially print "text"
+Daren C. - Instructor:15:25 try issuing an echo command with something and see what it gives back
+Mary:15:27 thanks!
+Mary:15:37 what does -f3 mean/do?
+Daren C. - Instructor:15:39 if issuing this as a flag to 'cut', this takes the 3rd field (i.e., 3rd column)
+Mary:15:40 ah, I see!
+Daren C. - Instructor:15:44 @Mary, is that you taking all the notes to the left? Hard to tell since some colors are very similar between users
+Mary:15:44 yes, that is me. thank you for editing everything!
+Daren C. - Instructor:15:45 No problem, good job keeping that updates. Hopefully everyone else appreciates too!
+Dhinesh:15:50 how to copy only from 1 to n files not all
+Daren C. - Instructor:15:51 You modify the wild-card accordingly
+Daren C. - Instructor:15:51 ??.txt matches anything with two characters and then '.txt'
+Daren C. - Instructor:15:51 to restrict that further takes some further thought on what files you want to isolate
+Daren C. - Instructor:15:52 depending on what you want to do, this might not be easy
+Dhinesh:15:53 yes I understand..for now i have say number of files in the for loop is 10 and I want to display only 1 to 5 files
+Daren C. - Instructor:15:54 at least a couple ways:
+Daren C. - Instructor:15:54 1. restrict your 'query' more so it is only the 5 files, as I've already pointed out
+Daren C. - Instructor:15:56 2. you can use something called a command substitution, but that is a lot more advanced than we are getting to right now
+Dhinesh:15:56 ok thanks..I guess bash does not have an index which is not possible as my question
+Daren C. - Instructor:15:57 the command you are is something that restricts your list more, maybe something like 'ls -1 | head -5'
+Daren C. - Instructor:15:57 see more info one command substitution at https://www.gnu.org/software/bash/manual/html_node/Command-Substitution.html
+Daren C. - Instructor:15:57 this is very advanced, so don't worry if you aren't getting it, and ignore if you want
+Daren C. - Instructor:15:58 you could set things up to index, as you point out, but it isn't as simple as it might be in something like Python
+Daren C. - Instructor:15:59 note that the list (in this case files) can be other things, like a sequence of numbers
+Daren C. - Instructor:15:59 e.g., for num in 1 2 3 4 5
+Daren C. - Instructor:16:00 so there are ways you can turn that into an indexing command and only run something on certain files
+Daren C. - Instructor:16:00 but to do all that, the easier thing might just be to move the files you want to process to a new location, and then run your for loop there, and move results accordingly
+Daren C. - Instructor:16:01 ^^^^^ some very advanced answers to a very advanced question, so feel free to ignore ^^^^^
+Dhinesh:16:01 alright got it..thanks Daren
+Mary:16:03 how can we open the file add.py after exiting it?
+Daren C. - Instructor:16:03 to view, just do 'cat add.py'
+Mary:16:03 I want to edit the file because I'm missing a parenthesis.
+Daren C. - Instructor:16:03 to edit, you can open with nano or a GUI text editor, depending on the system
+Daren C. - Instructor:16:03 or what is easiest for you to do
+Mary:16:04 got it!
+bruce_wayne:16:25 what does bash do?
+Daren C. - Instructor:16:26 bash is a type of shell
+Daren C. - Instructor:16:26 there are other shell flavors that people will use, but bash is probably the most common
+Daren C. - Instructor:16:28 and shell is the interface you are using to interact with the computer; in this case we are using a command line interface (CLI) or terminal to interact with our computer
+bruce_wayne:16:29 okay thank you!
+Daren C. - Instructor:16:30 before today, you have probably only used a graphical user interface (GUI) to interact with your computer, which is what your operating system and programs (e.g., MS Word, etc.) are
+Yam:09:17 Good Morning Everyone
+Kristopher:09:38 is jupyter an IDE?
+Kevin - Instructor:10:01 @Kristopher, Yes and no. It's actually something different...,., Like the next evolutionary step after an IDE.
+Kristopher:10:18 thanks Kevin, follow up question, what is anaconda?
+:10:24 @Kristopher , Anaconda is like a big platform for big data platforms.
+:10:25 @Kristopher, basically a package management system for Conda.
+Mary:10:28 does csv stand for comma separated value or variable?
+Kevin - Instructor:10:29 comma separated values
+apurva!:10:30 head function by default outputs 5?
+apurva!:10:31 oh thanks :)
+Kevin - Instructor:10:45 in python, you can put various functions into a help() function to get some information about what they do
+Kevin - Instructor:10:45 so, if you do help(dataframe.head), you can get that information from within python
+Kevin - Instructor:10:46 replace dataframe with the name of your dataframe, btw
+Kristopher:12:08 when you insert pandas as pd, can you still call it using pandas or only pd?
+Devendra:12:17 @Kristopher: only pd works
+bruce_wayne:12:43 when replacing the -1111.1 for zero why do we need the inplace=true?
+bruce_wayne:12:43 i didnt catch that
+Kevin - Instructor:12:44 That modifies the data structure in place rather than returning a modified copy
+Kevin - Instructor:12:44 Does that make sense?
+bruce_wayne:12:45 what the difference between the two exactly?
+bruce_wayne:12:54 @Kevin oh never mind i figured it out thank you
+Kevin - Instructor:13:42 good
+Jesus:13:54 Has anyone figured out how to change the size of the image of the plot?
+Kevin - Instructor:14:05 http://stackoverflow.com/questions/36367986/how-to-make-inline-plots-in-jupyter-notebook-larger
+Dhinesh:14:26 How to pass an array as a argument to a user defined function?
+updog:14:57 What was the command to see all the options on the cell?
+unnamed:10:49 @Dinesh you can pass a list same way you pass any other variable
+unnamed:10:51 eg. def sum_list(lst):
+unnamed:10:52 @sergio to see all the options on a cell start typing the command and than hit 'tab'
